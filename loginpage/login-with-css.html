@@ -1,0 +1,161 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>login with css</title>
+    <style>
+        body{ 
+            
+            padding: 0%;
+            margin: 0;
+            background:rgb(0, 0, 0);
+        }
+        #frm{
+            box-shadow: -2px -4px 10px 20px rgb(48, 50, 51);
+            width: 800px;
+            height: 500px;
+            
+            position: relative;
+            /* top: 50%;
+            left: 50%;
+            transform: translate(-50%,20%); */
+            margin:auto;
+            margin-top: 40px;
+            text-align: center;
+            /* background-color: rgb(24, 85, 106); */
+            
+            
+        }
+        img{
+            margin-top: 10px;
+            width: 100px;
+            height: 100px;
+            position:relative;
+            border-radius: 60px;
+        }
+        
+        #eml{
+            border-bottom-right-radius: 10px;
+            margin-left: auto;
+            margin-top: 60px;
+            margin-bottom: 20px;
+            width: 200px;
+            height: 30px;
+            
+        }
+        #eml:hover{
+            font-size: 15pt;
+            background-color: rgb(147, 99, 8);
+        }
+        #psw{
+            border-top-left-radius: 10px;
+            border-bottom-right-radius: 10px;
+            margin-left: auto;
+            margin-bottom: 20px;
+            width: 200px;
+            height: 30px;
+        }
+        #psw:hover{
+            font-size: x-large;
+            background-color: rgb(224, 221, 221);
+        }
+       /* #btn{
+            width: 80px;
+            height: 30px;
+            margin-left: 40px;
+            margin-top: -20px;
+        }*/
+        #sbtn1{
+            width: 100px;
+            height: 30px;
+            position: absolute;
+            margin-left: auto;
+            margin-top: 6px;
+            background-color: rgb(145, 188, 17);
+           
+        }
+        #sbtn1:hover{
+            background-color: rgb(23, 192, 90);
+            border-radius: 20px;
+            font-size: 14pt;
+            opacity: 1;
+            cursor: pointer;
+            
+        }
+        h1{
+            color:white;
+            margin: auto;
+        }
+        h1:hover{
+            color: aqua;
+            transition: all 0.5s;
+        }
+        .mover{
+            font-size: 45pt;
+        }
+      ul{
+            z-index: -1;
+            
+        }
+        /* #sbtn1{
+            display: none;
+        } */
+       @media screen and (min-width:1px) and (max-width:992px){
+        #frm{
+            margin:auto ;
+        }
+       }
+    </style>
+</head>
+<body>
+    <form method="post" id="frm" action="https://mail.google.com/mail/u/0/#inbox" target="_blank">
+        <img src="image/man logo.jpg" alt="no image found">
+        <h1 id="mover">Login</h1>
+        
+        <input type="email" name="e-mail" id="eml" placeholder="gmail" value="" onchange="viewbtn()"><br>
+        <input type="password" name="password" id="psw" placeholder="password" value=""><br>
+        <input type="submit" name="submit" id="sbtn1" onclick="checkid()" value="Login">
+       <!-- <input type="reset" name="clear" id="btn"> -->
+    </form>
+    <script>
+        const data = [{id:1,name:'arulmanikandan@gmail',age:24,password:1},{id:2,name:'mani@gmail',age:21,password:6},{id:3,name:'manikandan@gmail',age:24,password:123456},{id:4,name:'arul@gmail',age:24,password:123456}]
+        let flog = false;
+        let flogcheckid = true;
+           
+             function viewbtn(){
+                if(eml.value == ""){
+                document.getElementById('sbtn1').setAttribute("style", "display:none");
+                flog = true
+             }
+                    if(flog == true){
+                        data.map((data) => {
+                            if(eml.value == data.name){
+                                document.getElementById('sbtn1').setAttribute("style", "display:inline");
+                                flog = false;
+                            }
+                        })
+                    }
+             }
+        
+        function checkid(){ 
+            
+            // console.log(data.name);
+        data.map((data) => {
+            // console.log(data.name);
+            if(eml.value == data.name && psw.value == data.password){
+            // console.log(Object.values(data));
+            window.alert(Object.values(data));
+            flogcheckid = false;
+        }
+        })
+        if(flogcheckid == true){
+            window.alert("pls enter valid user id");
+            let emailsendid = document.getElementById('frm').setAttribute('action','https://mail.google.com');
+            
+        }
+    }
+    </script>
+</body>
+</html>
